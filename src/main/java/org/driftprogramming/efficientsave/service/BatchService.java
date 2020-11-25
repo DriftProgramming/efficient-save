@@ -30,7 +30,7 @@ public class BatchService {
 
         stopWatch.start("task-SaveAll");
 
-        orderRepo.insertInBatch(orders);
+        orderRepo.insertInBatch(orders, 50);
 
         stopWatch.stop();
 
@@ -39,7 +39,7 @@ public class BatchService {
     }
 
 
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional
     public void saveCompanies() throws Exception {
         StopWatch stopWatch = new StopWatch("SaveAllTaskStopWatch");
         Integer companyNumber = 1000;
@@ -48,7 +48,7 @@ public class BatchService {
 
         stopWatch.start("task-SaveAll");
 
-        companyRepo.insertInBatch(companies);
+        companyRepo.insertInBatch(companies, 50);
 
         stopWatch.stop();
 

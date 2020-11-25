@@ -14,11 +14,11 @@ public class BatchRepositoryImpl<T> implements BatchRepository<T> {
     private EntityManager entityManager;
 
     @Override
-    public <S extends T> void insertInBatch(List<S> list) {
+    public <S extends T> void insertInBatch(List<S> list, int batchSize) {
         if (!ObjectUtils.isEmpty(list)) {
             for (int i = 0; i < list.size(); i++) {
                 entityManager.persist(list.get(i));
-                if (i % 50 == 0) {
+                if (i % batchSize == 0) {
                     entityManager.flush();
                     entityManager.clear();
                 }
@@ -29,11 +29,11 @@ public class BatchRepositoryImpl<T> implements BatchRepository<T> {
     }
 
     @Override
-    public <S extends T> void updateInBatch(List<S> list) {
+    public <S extends T> void updateInBatch(List<S> list, int batchSize) {
         if (!ObjectUtils.isEmpty(list)) {
             for (int i = 0; i < list.size(); i++) {
                 entityManager.merge(list.get(i));
-                if (i % 50 == 0) {
+                if (i % batchSize == 0) {
                     entityManager.flush();
                     entityManager.clear();
                 }
