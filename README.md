@@ -1,4 +1,4 @@
-#### How it works
+## How it works
 
 Add this two files in your project:
 
@@ -6,7 +6,7 @@ Add this two files in your project:
 - src/main/java/org/driftprogramming/efficientsave/batch/BatchRepositoryImpl.java
 
 
-#### How to use it
+## How to use it
 1.Assuming we have a BizOrder Entity like this:
 ```aidl
 @Entity
